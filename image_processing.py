@@ -13,3 +13,4 @@ cv2.imwrite('gray_image.png',gray_image)
 cv2.imshow('color_image',image)
 cv2.imshow('gray_image',gray_image)
 """
+blah blah blah
