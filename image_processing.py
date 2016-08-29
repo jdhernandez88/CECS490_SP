@@ -4,8 +4,25 @@ import numpy as np
 img = cv2.imread('hand.jpg')
 
 test = img[0,0]
+#median = cv2.medianBlur(img,5)
+
+#Resize Image
+img2 = cv2.resize(img,None,fx=0.10, fy=0.10, interpolation = cv2.INTER_CUBIC)
+
+#Applying Grayscale filter to image
+gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+cv2.imwrite('graytest.jpg',gray)
+
+#Apply BilateralFilter
+blur = cv2.bilateralFilter(gray,10,100,100)
+cv2.imwrite('blurtest.jpg',blur)
+
+#Apply Edge Detetion
+edges = cv2.Canny(gray,100,255)
+cv2.imwrite('edgetest.jpg',edges)
 #print test
-print test
+#print test
+"""
 # testing some file reading 
 #kernal = open('test.txt', 'r')
 #print kernal.read()
@@ -40,19 +57,21 @@ for z in range(0,3):
 #Display Image
 #cv2.imshow('image',img)
 # Scaling factor (fx= , fy= )
-img2 = cv2.resize(img,None,fx=0.10, fy=0.10, interpolation = cv2.INTER_CUBIC)
+
 print img2[0,0,1]
 print img2 [0,0]
 #255 = black, 0=white
 for x in range(0, 299):
   for y in range (0,299):
    img2 [x,y] =[0,255,255]
+"""
 
 #Applying Grayscale filter to image
-gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+#gray = cv2.cvtColor(blur, cv2.COLOR_BGR2GRAY)
+
 
 #Saving filtered image to new file
-cv2.imwrite('graytest.jpg',gray)
+#cv2.imwrite('graytest.jpg',img3)
 
 #Convolution is simple an element-wise multiplacation of two matrices followed by a sum
 # two matrices, both with the same dimensions
